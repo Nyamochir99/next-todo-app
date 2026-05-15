@@ -58,3 +58,14 @@ SELECT COUNT(DISTINCT user_id) from bank_transactions;
 SELECT COUNT(*) from users where username LIKE '%\_99' or username LIKE '%\_01';
 --15
 SELECT amount, transaction_type, balance from bank_transactions order by balance asc limit 1; 
+
+--1
+insert into orders (user_id, order_date, production_name, total_price, status) VALUES (999, now(), 'test production', 100.00, 'pending');
+--2
+select id from users where id=1;
+--3
+delete from users where id=1;
+--4
+select count(DISTINCT user_id) as unique_customers_count from orders;
+--5
+select user_id, count(*) as total_orders from orders group by user_id order by total_orders desc limit 1;
